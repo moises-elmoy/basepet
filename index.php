@@ -8,7 +8,7 @@ include "includes/conecta.php"
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BasePet</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="principal/index.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
@@ -29,7 +29,7 @@ include "includes/conecta.php"
         <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav separacion">
             <li class="nav-item">
-            <a class="btn btn-primary me-2" href="log.php" role="button">Iniciar Sesión</a>
+            <a class="btn btn-primary me-2" href="principal/log.php" role="button">Iniciar Sesión</a>
             </li>
         </ul>
         </div>
