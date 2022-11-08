@@ -1,0 +1,18 @@
+.color-nav{
+    background-color: #A3D2CA;
+}
+
+.separacion{
+    margin-left: 85%;
+
+}
+
+.margen-boton{
+    margin-right: 5%;
+    padding: 2%;
+}
+
+.estable{
+    position: fixed;
+    z-index: 1000;
+}

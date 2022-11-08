@@ -1,0 +1,26 @@
+.space-buttons{
+	margin-left:3%;
+}
+
+.color-nav{
+    background-color: #A3D2CA;
+}
+
+.separacion{
+    margin-left: 20%;
+}
+
+.altura{
+    height: 40%;
+    background-color: lightgray;
+}
+
+.margen-boton{
+    margin-right: 5%;
+    padding: 2%;
+}
+
+.estable{
+    position: fixed;
+    z-index: 1000;
+}
