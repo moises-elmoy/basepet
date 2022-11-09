@@ -19,11 +19,12 @@ $nombre = $_POST['eNombre'];
 $apellido1 = $_POST['eApellido1'];
 $apellido2 = $_POST['eApellido2'];
 $correo = $_POST['eCorreo'];
+$pass = real_escape_string(md5($_POST['ePass']));
 $telefono = $_POST['eTelefono'];
 $direccion = $_POST['eDireccion'];
 $colonia = $_POST['eColonia'];
 //consulta para modificar los datos
-$edita = "UPDATE clientes SET nombre_cliente='$nombre', apellido1='$apellido1', apellido2='$apellido2', correo='$correo', telefono='$telefono', direccion='$direccion', colonia='$colonia' WHERE idcliente='$id'";
+$edita = "UPDATE clientes SET nombre_cliente='$nombre', apellido1='$apellido1', apellido2='$apellido2', correo='$correo', pass='$pass', telefono='$telefono', direccion='$direccion', colonia='$colonia' WHERE idcliente='$id'";
 $editar = $conecta -> query($edita);
 header("location:viewbasicPerfil.php"); 
 
@@ -63,6 +64,9 @@ header("location:viewbasicPerfil.php");
                 </div>
                 <div class="row mt-3">
                     <input type="email" name="eCorreo" class="form-control" value="<?php echo $datos['correo'];?>" require>
+                </div>
+                <div class="row mt-3">
+                    <input type="password" name="ePass" class="form-control" placeholder="Reescriba su contraseña o cambiela" require>
                 </div>
                 <div class="row mt-3">
                     <input type="number" name="eTelefono" class="form-control" max="99999999999" value="<?php echo $datos['telefono'];?>" require>

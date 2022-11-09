@@ -18,7 +18,7 @@ if(isset($_POST['registrar'])){
     $apellido1 = $conecta->real_escape_string($_POST['Apellido1']);
     $apellido2 = $conecta->real_escape_string($_POST['Apellido2']);
     $correo = $conecta->real_escape_string($_POST['Correo']);
-    $contra = $conecta->real_escape_string($_POST['Contra']);
+    $contra = $conecta->real_escape_string(md5("bienvenido"));
 
 //verificar que no exista el usuario que se va a insertar en la tabla 
 $verificar = "SELECT * FROM empleados WHERE correo = '$correo'";
@@ -97,13 +97,6 @@ if($validando->num_rows > 0){
                 <div class="row">
                     <input type="email" id="correo" name="Correo" class="form-control" placeholder="correo@ejemplo.com" require>
                 </div>
-            <label for="contra">Contraseña</label>
-                <div class="row">
-                    <input type="password" id="contra" name="Contra" class="form-control" placeholder="contraseña123" require>
-                </div>
-                <!-- <div class="row">
-                    <input type="submit" name="registrar" class="btn btn-success btn-sm btn-block" value="Registrar" require>
-                </div> -->
 
                 <a class="btn btn-danger mt-5 mb-3 me-2" href="empleados.php" role="button" style="margin-left:68%;">Cancelar</a>
                 <input type="submit" name="registrar" class="btn btn-success mt-5 mb-3" value="Registrar" require>

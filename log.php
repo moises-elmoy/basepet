@@ -6,8 +6,7 @@ include 'includes/conecta.php';
 if(isset($_POST['button_enviar'])){
 	//limpiar los campos de texto de alguna inyeccion mysql
 $user = $conecta->real_escape_string($_POST['correo']);
-//$pass = $conecta->real_escape_string(md5($_POST['contra']));
-$pass = $conecta->real_escape_string($_POST['contra']);
+$pass = $conecta->real_escape_string(md5($_POST['contra']));
 //generar una consulta que extraiga los datos de la base de datos de la tabla empleados
 $consulta = "SELECT * FROM empleados WHERE correo = '$user' AND contra = '$pass'";
 //generar una consulta que extraiga los datos de la base de datos de la tabla clientes

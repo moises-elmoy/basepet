@@ -19,6 +19,8 @@ $nombre = $_POST['eNombre'];
 $apellido1 = $_POST['eApellido1'];
 $apellido2 = $_POST['eApellido2'];
 $correo = $_POST['eCorreo'];
+$contra = real_escape_string(md5($_POST['eContra']));
+
 //consulta para modificar los datos
 $edita = "UPDATE empleados SET nombre='$nombre', apellido1='$apellido1', apellido2='$apellido2', correo='$correo' WHERE idempleado='$id'";
 $editar = $conecta -> query($edita);
@@ -60,6 +62,9 @@ header("location:perfil.php");
                 </div>
                 <div class=" mt-3">
                     <input type="email" name="eCorreo" class="form-control" value="<?php echo $datos['correo'];?>" require>
+                </div>
+                <div class="row mt-3">
+                    <input type="password" name="eContra" class="form-control" value="<?php echo $datos['contra'];?>" require>
                 </div>
                 <a class="btn btn-danger mt-5 mb-3 me-2" href="perfil.php" role="button" style="margin-left:70%;">Cancelar</a>
                 <input type="submit" name="modificar" class="btn btn-success mt-5 mb-3" value="Editar" require>

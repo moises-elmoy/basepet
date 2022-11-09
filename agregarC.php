@@ -18,10 +18,12 @@ if(isset($_POST['registrar'])){
     $apellido1 = $conecta->real_escape_string($_POST['Apellido1']);
     $apellido2 = $conecta->real_escape_string($_POST['Apellido2']);
     $correo = $conecta->real_escape_string($_POST['Correo']);
-    $contra = $conecta->real_escape_string($_POST['Contra']);
+    // $contra = $conecta->real_escape_string(md5($_POST['Contra']));
     $telefono = $conecta->real_escape_string($_POST['Telefono']);
     $direccion = $conecta->real_escape_string($_POST['Direccion']);
     $colonia = $conecta->real_escape_string($_POST['Colonia']);
+
+    $default = $conecta->real_escape_string(md5("bienvenido"));
 
 //verificar que no exista el usuario que se va a insertar en la tabla 
 $verificar = "SELECT * FROM clientes WHERE correo = '$correo'";
@@ -39,7 +41,7 @@ if($validando->num_rows > 0){
 }else{
     //si da cero entonces pasa a esta parte donde ya se agrega 
     //consulta para insertar los datos 
-    $insertar = "INSERT INTO clientes (nombre_cliente,apellido1,apellido2,correo,pass,telefono,direccion,colonia)VALUES('$nombre','$apellido1','$apellido2','$correo','$contra','$telefono','$direccion','$colonia');";
+    $insertar = "INSERT INTO clientes (nombre_cliente,apellido1,apellido2,correo,pass,telefono,direccion,colonia)VALUES('$nombre','$apellido1','$apellido2','$correo','$default','$telefono','$direccion','$colonia');";
     $guardando = $conecta->query($insertar);
     if($guardando > 0){
         $mensaje.="<div class='alert alert-success d-flex align-items-center' role='alert'>
@@ -110,9 +112,6 @@ if($validando->num_rows > 0){
                 <label for="colonia" class="mt-2"><strong>Colonia:</strong></label>
                     <div class="row">
                         <input type="text" id="colonia" name="Colonia" class="form-control" placeholder="Colonia Centro" require>
-                    </div>
-                    <div class="row">
-                        <input type="hidden" id="contra" name="Contra" value="bienvenido" require>
                     </div>
 
                     <a class="btn btn-danger mt-5 mb-3 me-2" href="clientes.php" role="button" style="margin-left:68%;">Cancelar</a>
