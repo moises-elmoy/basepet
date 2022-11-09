@@ -23,7 +23,7 @@ if(isset($_POST['registrar'])){
     $direccion = $conecta->real_escape_string($_POST['Direccion']);
     $colonia = $conecta->real_escape_string($_POST['Colonia']);
 
-    $default = $conecta->real_escape_string(md5("bienvenido"));
+    $default = $conecta->real_escape_string(md5("cliente"));
 
 //verificar que no exista el usuario que se va a insertar en la tabla 
 $verificar = "SELECT * FROM clientes WHERE correo = '$correo'";

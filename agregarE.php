@@ -18,7 +18,7 @@ if(isset($_POST['registrar'])){
     $apellido1 = $conecta->real_escape_string($_POST['Apellido1']);
     $apellido2 = $conecta->real_escape_string($_POST['Apellido2']);
     $correo = $conecta->real_escape_string($_POST['Correo']);
-    $contra = $conecta->real_escape_string(md5("bienvenido"));
+    $contra = $conecta->real_escape_string(md5("empleado"));
 
 //verificar que no exista el usuario que se va a insertar en la tabla 
 $verificar = "SELECT * FROM empleados WHERE correo = '$correo'";
