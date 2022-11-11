@@ -18,10 +18,7 @@ $row = $ejecuta->fetch_assoc();
 <?php
 include 'includes/conecta.php';
 
-//consulta
-//la variable where es para la busqueda, completa la consulta para mostrar el resultado en la tabla 
-// $eventos = "SELECT * FROM eventos";
-// $save = $conecta->query($eventos);
+
 ?>
 
 <!DOCTYPE html>

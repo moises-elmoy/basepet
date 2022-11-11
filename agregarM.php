@@ -34,13 +34,6 @@ if(isset($_POST['registrar'])){
 $insertar = "INSERT INTO mascotas (nombre,color,genero,raza,especie,peso,edad,fecha,id_dueno)VALUES('$nombre','$color','$genero','$raza','$especie','$peso','$edad','$fecha',$iddueno);";
 $guardando = $conecta->query($insertar);
 if($guardando > 0){
-    // $mensaje.="<div class='alert alert-success d-flex align-items-center' role='alert'>
-    // <svg class='bi flex-shrink-0 me-2' role='img' aria-label='Success:'><use xlink:href='#check-circle-fill'/></svg>
-    //     <div>
-    //         El registro se realizo con exito
-    //     </div>
-    // </div>
-    // ";
     header("location:principal.php");
 }else{
     $mensaje.="<div class='alert alert-success d-flex align-items-center' role='alert'>

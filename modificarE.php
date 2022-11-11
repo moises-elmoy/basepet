@@ -61,9 +61,6 @@ header("location:empleados.php");
                 <div class="row">
                     <input type="email" name="eCorreo" class="form-control" value="<?php echo $datos['correo'];?>" require>
                 </div>
-                <!-- <div class="row">
-                    <input type="submit" name="modificar" class="btn btn-success btn-sm btn-block" value="Editar" require>
-                </div> -->
                 <a class="btn btn-danger mt-5 mb-3 me-2" href="empleados.php" role="button" style="margin-left:70%;">Cancelar</a>
                 <input type="submit" name="modificar" class="btn btn-success mt-5 mb-3" value="Editar" require>
             </form>

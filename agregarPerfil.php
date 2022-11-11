@@ -78,7 +78,7 @@ if($validando->num_rows > 0){
 </head>
 <body style="background-color: #A3D2CA;">
     <div class="container-fluid shadow p-3 w-50 h-60 mt-5 mb-5" style="background-color: lightgray;">
-        <h4 class="text-center">Registrar Cliente</h4>
+        <h4 class="text-center">Registrar Empleado</h4>
         <div class="col-sm-12 col-md-12 col-lg-12">
         <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
             <label for="nombre">Nombre</label>        
@@ -98,7 +98,7 @@ if($validando->num_rows > 0){
                     <input type="email" id="correo" name="Correo" class="form-control" placeholder="correo@ejemplo.com" require>
                 </div>
 
-                <a class="btn btn-danger mt-5 mb-3 me-2" href="empleados.php" role="button" style="margin-left:68%;">Cancelar</a>
+                <a class="btn btn-danger mt-5 mb-3 me-2" href="perfil.php" role="button" style="margin-left:68%;">Cancelar</a>
                 <input type="submit" name="registrar" class="btn btn-success mt-5 mb-3" value="Registrar" require>
         </form>
         </div>
