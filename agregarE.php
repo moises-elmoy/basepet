@@ -78,7 +78,7 @@ if($validando->num_rows > 0){
 </head>
 <body style="background-color: #A3D2CA;">
     <div class="container-fluid shadow p-3 w-50 h-60 mt-5 mb-5" style="background-color: lightgray;">
-        <h4 class="text-center">Registrar Cliente</h4>
+        <h4 class="text-center">Registrar Empleado</h4>
         <div class="col-sm-12 col-md-12 col-lg-12">
         <form action="<?php echo $_SERVER['PHP_SELF'];?>" method="POST">
             <label for="nombre">Nombre</label>        
