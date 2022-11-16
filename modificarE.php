@@ -52,13 +52,13 @@ header("location:empleados.php");
                     <input type="hidden" name="id" value="<?php echo $datos['idempleado'];?>">
                     <input type="text" name="eNombre" class="form-control" value="<?php echo $datos['nombre'];?>" require>
                 </div>
-                <div class="row">
+                <div class="row mt-3">
                     <input type="text" name="eApellido1" class="form-control" value="<?php echo $datos['apellido1'];?>" require>
                 </div>
-                <div class="row">
+                <div class="row mt-3">
                     <input type="text" name="eApellido2" class="form-control" value="<?php echo $datos['apellido2'];?>">
                 </div>
-                <div class="row">
+                <div class="row mt-3">
                     <input type="email" name="eCorreo" class="form-control" value="<?php echo $datos['correo'];?>" require>
                 </div>
                 <a class="btn btn-danger mt-5 mb-3 me-2" href="empleados.php" role="button" style="margin-left:70%;">Cancelar</a>

@@ -59,36 +59,23 @@ $guardar = $conecta->query($bus_emp);
 
 </head>
 <body>
-    <!--Barra de navegación-->
-    <nav class="navbar navbar-expand-lg" style="background-color: #A3D2CA;">
+      <!--Barra de navegación-->
+      <nav class="navbar navbar-expand-lg" style="background-color: #A3D2CA;">
     <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler" style="background-color: white;" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+        </svg></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="principal.php" title="Aquí puede observar las mascotas registradas">Mascotas</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="citas.php" title="Aquí puede visualizar las citas que tiene pendientes">Citas</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="clientes.php" title="Ver tabla de clientes y agregar mascotas">Clientes</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="perfil.php" title="Aquí puede revisar su perfil">Perfil</a>
+                <a class="nav-link active" aria-current="page" href="perfil.php" title="Volver al inicio"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/>
+                </svg></a>
             </li>
         </ul>
-        <form class="d-flex" role="search" style="margin-left:30%;" action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
-            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search" name="buscar" id="buscar">
-            <button class="btn btn-outline-success me-2" type="submit" title="Iniciar busqueda">
-                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
-                </svg>
-            </button>
-        </form>
-        <ul class="navbar-nav" style="margin-left: 30%;">
+        <ul class="navbar-nav" style="margin-left: 90%;">
             <li class="nav-item">
                 <a class="btn btn-danger me-2" role="button" href="includes/cerrars.php" title="Cerrar Sesión">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-power" viewBox="0 0 16 16" style="margin-left:1%;">
@@ -140,16 +127,33 @@ $guardar = $conecta->query($bus_emp);
                             <td class="text-center"><?php echo $row['apellido2'];?></td>
                             <td class="text-center"><?php echo $row['correo'];?></td>
                             <td>
+                                <!--inicio botón de opciones-->
                                 <div class="dropdown">
                                     <a class="btn btn-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
                                         </svg>
                                     </a>
+                                    <!--Menú de opciones para cada mascota de la tabla-->
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="modificarE.php?idempleado=<?php echo $row['idempleado'];?>">Editar</a></li>
-                                        <li><a class="dropdown-item" href="eliminarE.php?idempleado=<?php echo $row['idempleado'];?>">Eliminar</a></li>
+                                        <!--Boton de eliminar-->
+                                        <a class="dropdown-item" href="eliminar.php?idempleado=<?php echo $row['idempleado'];?>">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-trash3-fill text-danger me-3" viewBox="0 0 16 16">
+                                            <path d="M11 1.5v1h3.5a.5.5 0 0 1 0 1h-.538l-.853 10.66A2 2 0 0 1 11.115 16h-6.23a2 2 0 0 1-1.994-1.84L2.038 3.5H1.5a.5.5 0 0 1 0-1H5v-1A1.5 1.5 0 0 1 6.5 0h3A1.5 1.5 0 0 1 11 1.5Zm-5 0v1h4v-1a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5ZM4.5 5.029l.5 8.5a.5.5 0 1 0 .998-.06l-.5-8.5a.5.5 0 1 0-.998.06Zm6.53-.528a.5.5 0 0 0-.528.47l-.5 8.5a.5.5 0 0 0 .998.058l.5-8.5a.5.5 0 0 0-.47-.528ZM8 4.5a.5.5 0 0 0-.5.5v8.5a.5.5 0 0 0 1 0V5a.5.5 0 0 0-.5-.5Z"/>
+                                            </svg>Eliminar
+                                        </a>
+
+                                        <!--Botón de editar-->
+                                        <li>
+                                            <a class="dropdown-item" href="modificar.php?idempleado=<?php echo $row['idempleado'];?>">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-fill text-warning me-3" viewBox="0 0 16 16">
+                                                <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+                                                </svg>Editar
+                                            </a>
+                                        </li>
+
                                     </ul>
+                                    <!--fin de menú de opciones-->
                                 </div>
                             </td>
                         </tr>
