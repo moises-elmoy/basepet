@@ -124,7 +124,7 @@ $guardar = $conecta->query($registrosM);
                         <th class="text-center">Especie</th>
                         <th class="text-center">Peso</th>
                         <th class="text-center">Edad</th>
-                        <th class="text-center">Fecha de Registro</th>
+                        <th class="text-center">Fecha de Nacimiento</th>
                         <th class="text-center">Opciones</th>
                     </thead>
                     <tbody>

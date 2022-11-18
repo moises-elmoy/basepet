@@ -98,7 +98,7 @@ if($guardando > 0){
                     <input type="number" name="Peso" placeholder="6.5" class="form-control" min="0" max="120" step="0.1" required>
                 <label class="mt-2"><strong>Edad(años):</strong></label>
                     <input type="number" name="Edad" placeholder="1" class="form-control" min="0" max="50" step="0.1" required>
-                <label class="mt-2"><strong>Fecha de registro:</strong></label>
+                <label class="mt-2"><strong>Fecha de Nacimiento:</strong></label>
                     <input type="date" name="Fecha" class="form-control" placeholder="Fecha" require>
 
                     <a class="btn btn-danger mt-5 mb-3 me-2" href="clientes.php" role="button" style="margin-left:68%;">Cancelar</a>
