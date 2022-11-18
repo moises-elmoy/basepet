@@ -37,7 +37,7 @@ if(!empty($_POST)){
 //consultas
 //la variable where es para la busqueda, completa la consulta para mostrar el resultado en la tabla 
 
-$citasR = "SELECT c.nombre_mascota, m.raza, c.descripcion, c.fecha_cita, c.horario FROM citas AS c, mascotas AS m WHERE c.id_mascota = m.idmascota AND $where";
+$citasR = "SELECT * FROM citas $where ORDER BY fecha_cita ASC, horario ASC";
 $guardar = $conecta->query($citasR);
 ?>
 
@@ -125,16 +125,18 @@ $guardar = $conecta->query($citasR);
                         <th class="text-center">Descripción</th>
                         <th class="text-center">Fecha</th>
                         <th class="text-center">Hora</th>
+                        <th class="text-center">Dueño</th>
                         <th class="text-center">Opción</th>
                     </thead>
                     <tbody class="table-group-divider">
                         <?php while($row = $guardar->fetch_assoc()){?>
                         <tr>
-                            <td class="text-center"><?php echo $row['c.nombre_mascota'];?></td>
-                            <td class="text-center"><?php echo $row['m.raza'];?></td>
-                            <td class="text-center"><?php echo $row['c.descripcion'];?></td>
-                            <td class="text-center"><?php echo $row['c.fecha_cita'];?></td>
-                            <td class="text-center"><?php echo $row['c.horario'];?></td>
+                            <td class="text-center"><?php echo $row['nombre_mascota'];?></td>
+                            <td class="text-center"><?php echo $row['raza_c'];?></td>
+                            <td class="text-center"><?php echo $row['descripcion'];?></td>
+                            <td class="text-center"><?php echo $row['fecha_cita'];?></td>
+                            <td class="text-center"><?php echo $row['horario'];?></td>
+                            <td class="text-center"><?php echo $row['n_cliente'];?></td>
                             <td class="text-center">
                                 <a class="btn btn-danger" href="eliminarCita.php?id_citas=<?php echo $row['id_citas'];?>" role="button">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3-fill text-white me-2" viewBox="0 0 16 16">

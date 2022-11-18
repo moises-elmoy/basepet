@@ -14,7 +14,7 @@ if(!isset($visitante)){
 //generar la consulta para extraer el id del cliente y de esta manera conectarlo con la mascota que se esta agregando
 $id = $_GET['idmascota'];
 
-$m = "SELECT idmascota, nombre, id_dueno FROM mascotas WHERE idmascota = '$id'";
+$m = "SELECT idmascota, nombre, id_dueno,raza FROM mascotas WHERE idmascota = '$id'";
 $recuperar = $conecta -> query($m); 
 $datos = $recuperar->fetch_array();
 
@@ -33,6 +33,7 @@ if(isset($_POST['registrar'])){
     $horario = $conecta->real_escape_string($_POST['Horario']);
     $nombre_mascota = $conecta->real_escape_string($_POST['Nmascota']);
     $n_cliente = $conecta->real_escape_string($_POST['Ncliente']);
+    $raza = $conecta->real_escape_string($_POST['Nraza']);
 
 //verificar que no exista el usuario que se va a insertar en la tabla 
 $verificar = "SELECT * FROM citas WHERE fecha_cita = '$fecha_cita' AND horario = '$horario'";
@@ -50,7 +51,7 @@ if($validando->num_rows > 0){
 }else{
 
 //consulta para insertar los datos 
-$insertar = "INSERT INTO citas (id_mascota,fecha_cita,descripcion,horario,nombre_mascota,n_cliente)VALUES('$id_mascota','$fecha_cita','$descripcion','$horario','$nombre_mascota','$n_cliente');";
+$insertar = "INSERT INTO citas (id_mascota,fecha_cita,descripcion,horario,nombre_mascota,n_cliente,raza_c)VALUES('$id_mascota','$fecha_cita','$descripcion','$horario','$nombre_mascota','$n_cliente','$raza');";
 $guardando = $conecta->query($insertar);
 if($guardando > 0){
     $mensaje.="<div class='alert alert-success d-flex align-items-center' role='alert'>
@@ -99,6 +100,7 @@ if($guardando > 0){
                     <!--el tipo hidden en el input es para que no sea visible pero el campo exista para poder recuperar datos-->
                     <input type="hidden" name="Idmascota" value="<?php echo $datos['idmascota'];?>">
                     <input type="hidden" name="Nmascota" value="<?php echo $datos['nombre'];?>">
+                    <input type="hidden" name="Nraza" value="<?php echo $campo['raza'];?>">
                     <input type="hidden" name="Ncliente" value="<?php echo $campo['nombre_cliente'];?>">
                 <label class="mt-2"><strong>Descripcion:</strong></label>
                     <input type="text" name="Descripcion" placeholder="Corte de pelo,consulta,vacunacion,etc." class="form-control" required>
