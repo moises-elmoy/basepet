@@ -15,10 +15,106 @@ $ejecuta = $conecta->query($consulta);
 //asocia toda la linea donde se encuentre la variable de sesion del correo del usuario
 $row = $ejecuta->fetch_assoc();
 
-//Ver datos de la consulta de la mascota
+//consultas de las distintas tablas de analisis de consulta de la mascota
+//Datos de la Tabla alimentacion
+$alimento = "SELECT * FROM alimentacion WHERE id_mascota = '$id'";
+$food = $conecta -> query($alimento); 
+$datos_alimento = $food->fetch_array();
+
+//Datos de la Tabla vacunacion
 $v = "SELECT * FROM vacunacion WHERE id_mascota = '$id'";
 $seleccionar_vacuna = $conecta -> query($v); 
 $datos_vacuna = $seleccionar_vacuna->fetch_array();
+
+//Datos de la Tabla digestivo
+$digestivo = "SELECT * FROM digestivo WHERE id_mascota = '$id'";
+$dig = $conecta -> query($digestivo); 
+$datos_digestivo = $dig->fetch_array();
+
+//Datos de la Tabla cardiovascular
+$cardiovascular = "SELECT * FROM cardiovascular WHERE id_mascota = '$id'";
+$car_vas = $conecta -> query($cardiovascular); 
+$datos_car_vas = $car_vas->fetch_array();
+
+//Datos de la Tabla respiratorio
+$respiratorio = "SELECT * FROM respiratorio WHERE id_mascota = '$id'";
+$respi = $conecta -> query($respiratorio); 
+$datos_respi= $respi->fetch_array();
+
+//Datos de la Tabla reproductor
+$reproductor = "SELECT * FROM reproductor WHERE id_mascota = '$id'";
+$repro = $conecta -> query($reproductor); 
+$datos_repro= $repro->fetch_array();
+
+//Datos de la Tabla exafisico
+$exafisico= "SELECT * FROM exafisico WHERE id_mascota = '$id'";
+$ef = $conecta -> query($exafisico); 
+$datos_ef= $ef->fetch_array();
+
+//Datos de la Tabla bucal
+$bucal= "SELECT * FROM bucal WHERE id_mascota = '$id'";
+$cav_buc = $conecta -> query($bucal); 
+$datos_cb= $cav_buc->fetch_array();
+
+//Datos de la Tabla ojos
+$ojos= "SELECT * FROM ojos WHERE id_mascota = '$id'";
+$eyes = $conecta -> query($ojos); 
+$datos_ojos= $eyes->fetch_array();
+
+//Datos de la Tabla mucosas
+$mucosas= "SELECT * FROM mucosas WHERE id_mascota = '$id'";
+$muc = $conecta -> query($mucosas); 
+$datos_muc= $muc->fetch_array();
+
+//Datos de la Tabla auscultacion_r
+$auscultacion_r= "SELECT * FROM auscultacion_r WHERE id_mascota = '$id'";
+$au_r = $conecta -> query($auscultacion_r); 
+$datos_au_r= $au_r->fetch_array();
+
+//Datos de la Tabla auscultacion_c
+$auscultacion_c= "SELECT * FROM auscultacion_c WHERE id_mascota = '$id'";
+$au_c = $conecta -> query($auscultacion_c); 
+$datos_au_c= $au_c->fetch_array();
+
+//Datos de la Tabla palpacion
+$palpacion= "SELECT * FROM palpacion WHERE id_mascota = '$id'";
+$palp = $conecta -> query($palpacion); 
+$datos_palp= $palp->fetch_array();
+
+//Datos de la Tabla constantes
+$constantes= "SELECT * FROM constantes WHERE id_mascota = '$id'";
+$const = $conecta -> query($constantes); 
+$datos_const= $const->fetch_array();
+
+//Datos de la Tabla constantes
+$constantes= "SELECT * FROM constantes WHERE id_mascota = '$id'";
+$const = $conecta -> query($constantes); 
+$datos_const= $const->fetch_array();
+
+//Datos de la Tabla mus_esqueletico
+$mus_esqueletico= "SELECT * FROM mus_esqueletico WHERE id_mascota = '$id'";
+$me = $conecta -> query($mus_esqueletico); 
+$datos_me= $me->fetch_array();
+
+//Datos de la Tabla tegumentario
+$tegumentario= "SELECT * FROM tegumentario WHERE id_mascota = '$id'";
+$teg = $conecta -> query($tegumentario); 
+$datos_teg= $teg->fetch_array();
+
+//Datos de la Tabla nervioso
+$nervioso= "SELECT * FROM nervioso WHERE id_mascota = '$id'";
+$sisner = $conecta -> query($nervioso); 
+$datos_sisner= $sisner->fetch_array();
+
+//Datos de la Tabla conducta
+$conducta= "SELECT * FROM conducta WHERE id_mascota = '$id'";
+$cond = $conecta -> query($conducta); 
+$datos_cond= $cond->fetch_array();
+
+//Datos de la Tabla diagnostico
+$diagnostico= "SELECT * FROM diagnostico WHERE id_mascota = '$id'";
+$df = $conecta -> query($diagnostico); 
+$datos_df= $df->fetch_array();
 ?>
 
 <?php
@@ -117,7 +213,46 @@ include 'includes/conecta.php';
     <!--Separador-->
     <span class="placeholder col-10 mt-3" style="background-color: #A3D2CA; margin-left:8%;"></span>
 
-    <!-- Tabla de los datos de la mascota -->
+    <!--botón para generar PDF-->
+    <a class="btn btn-primary mt-3" style="margin-left:80%;" href="reporte.php?idmascota=<?php echo $row['idmascota'];?>" role="button" title="Reporte en pdf del historial de la mascota">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-filetype-pdf" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM1.6 11.85H0v3.999h.791v-1.342h.803c.287 0 .531-.057.732-.173.203-.117.358-.275.463-.474a1.42 1.42 0 0 0 .161-.677c0-.25-.053-.476-.158-.677a1.176 1.176 0 0 0-.46-.477c-.2-.12-.443-.179-.732-.179Zm.545 1.333a.795.795 0 0 1-.085.38.574.574 0 0 1-.238.241.794.794 0 0 1-.375.082H.788V12.48h.66c.218 0 .389.06.512.181.123.122.185.296.185.522Zm1.217-1.333v3.999h1.46c.401 0 .734-.08.998-.237a1.45 1.45 0 0 0 .595-.689c.13-.3.196-.662.196-1.084 0-.42-.065-.778-.196-1.075a1.426 1.426 0 0 0-.589-.68c-.264-.156-.599-.234-1.005-.234H3.362Zm.791.645h.563c.248 0 .45.05.609.152a.89.89 0 0 1 .354.454c.079.201.118.452.118.753a2.3 2.3 0 0 1-.068.592 1.14 1.14 0 0 1-.196.422.8.8 0 0 1-.334.252 1.298 1.298 0 0 1-.483.082h-.563v-2.707Zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638H7.896Z"/>
+    </svg>
+    Generar reporte
+    </a>
+
+    <!-- Tabla de los datos alimentacion-->
+    <div class="container">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h4 class="text-center mt-3">Alimentación</h4>
+            <div class="table-responsive table-hover" id="TablaConsulta">
+                <table class="table">
+                    <thead class="text-muted">
+                        <th class="text-center">Croquetas</th>
+                        <th class="text-center">Comida Casera</th>
+                        <th class="text-center">Hueso</th>
+                        <th class="text-center">Frecuencia</th>
+                        <th class="text-center">Agua</th>
+                        <th class="text-center">Marca</th>
+                        <th class="text-center">Cantidad</th>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td class="text-center"><?php echo $datos_alimento['croquetas'];?></td>
+                            <td class="text-center"><?php echo $datos_alimento['comida_casera'];?></td>
+                            <td class="text-center"><?php echo $datos_alimento['huesos'];?></td>
+                            <td class="text-center"><?php echo $datos_alimento['frecuencia'];?></td>
+                            <td class="text-center"><?php echo $datos_alimento['agua'];?></td>
+                            <td class="text-center"><?php echo $datos_alimento['marcas'];?></td>
+                            <td class="text-center"><?php echo $datos_alimento['cantidad'];?></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>     
+    </div>
+
+    <!--Inicio de tabla vacunas-->
     <div class="container">
         <div class="col-sm-12 col-md-12 col-lg-12">
             <h4 class="text-center mt-3">Vacunas vigentes</h4>
@@ -151,13 +286,519 @@ include 'includes/conecta.php';
     </div>
     <!--fin de tabla vacunas-->
 
-    <!--botón para generar PDF-->
-    <a class="btn btn-primary mt-3" style="margin-left:80%;" href="reporte.php?idmascota=<?php echo $row['idmascota'];?>" role="button" title="Reporte en pdf del historial de la mascota">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-filetype-pdf" viewBox="0 0 16 16">
-        <path fill-rule="evenodd" d="M14 4.5V14a2 2 0 0 1-2 2h-1v-1h1a1 1 0 0 0 1-1V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v9H2V2a2 2 0 0 1 2-2h5.5L14 4.5ZM1.6 11.85H0v3.999h.791v-1.342h.803c.287 0 .531-.057.732-.173.203-.117.358-.275.463-.474a1.42 1.42 0 0 0 .161-.677c0-.25-.053-.476-.158-.677a1.176 1.176 0 0 0-.46-.477c-.2-.12-.443-.179-.732-.179Zm.545 1.333a.795.795 0 0 1-.085.38.574.574 0 0 1-.238.241.794.794 0 0 1-.375.082H.788V12.48h.66c.218 0 .389.06.512.181.123.122.185.296.185.522Zm1.217-1.333v3.999h1.46c.401 0 .734-.08.998-.237a1.45 1.45 0 0 0 .595-.689c.13-.3.196-.662.196-1.084 0-.42-.065-.778-.196-1.075a1.426 1.426 0 0 0-.589-.68c-.264-.156-.599-.234-1.005-.234H3.362Zm.791.645h.563c.248 0 .45.05.609.152a.89.89 0 0 1 .354.454c.079.201.118.452.118.753a2.3 2.3 0 0 1-.068.592 1.14 1.14 0 0 1-.196.422.8.8 0 0 1-.334.252 1.298 1.298 0 0 1-.483.082h-.563v-2.707Zm3.743 1.763v1.591h-.79V11.85h2.548v.653H7.896v1.117h1.606v.638H7.896Z"/>
-    </svg>
-    Generar reporte
-    </a>
+    <!--Inicio de tabla  de datos Digestivo-->
+    <div class="container">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h4 class="text-center mt-3">Sistema Digestivo</h4>
+            <div class="table-responsive table-hover" id="TablaConsulta">
+                <table class="table">
+                    <thead class="text-muted">
+                        <th class="text-center">Apetito</th>
+                        <th class="text-center">Vómito</th>
+                        <th class="text-center">Frecuencia del vómito</th>
+                        <th class="text-center">Evacuaciones</th>
+                        <th class="text-center">Consistencia</th>
+                        <th class="text-center">Cambio de Color</th>
+                        <th class="text-center">Frecuencia de evacuaciones</th>
+                        <th class="text-center">Coproparasito</th>
+                        <th class="text-center">Resultado</th>
+                        <th class="text-center">Desparasitación</th>
+                        <th class="text-center">Producto</th>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td class="text-center"><?php echo $datos_digestivo['apetito'];?></td>
+                            <td class="text-center"><?php echo $datos_digestivo['vomito'];?></td>
+                            <td class="text-center"><?php echo $datos_digestivo['frecuencia_v'];?></td>
+                            <td class="text-center"><?php echo $datos_digestivo['evacuaciones'];?></td>
+                            <td class="text-center"><?php echo $datos_digestivo['consistencia'];?></td>
+                            <td class="text-center"><?php echo $datos_digestivo['cambio_color'];?></td>
+                            <td class="text-center"><?php echo $datos_digestivo['frecuencia_e'];?></td>
+                            <td class="text-center"><?php echo $datos_digestivo['coproparasit'];?></td>
+                            <td class="text-center"><?php echo $datos_digestivo['resultado'];?></td>
+                            <td class="text-center"><?php echo $datos_digestivo['desparasitacion'];?></td>
+                            <td class="text-center"><?php echo $datos_digestivo['producto'];?></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>     
+    </div>
+    <!--fin de tabla  de datos Digestivo-->
+
+    <!--Inicio de tabla cardiovascular-->
+    <div class="container">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h4 class="text-center mt-3">Cardiovascular</h4>
+            <div class="table-responsive table-hover" id="TablaConsulta">
+                <table class="table">
+                    <thead class="text-muted">
+                        <th class="text-center">Disnea</th>
+                        <th class="text-center">Sincopes</th>
+                        <th class="text-center">Fatiga</th>
+                        <th class="text-center">Letargo</th>
+                        <th class="text-center">Ascitis</th>
+                        <th class="text-center">Edema</th>
+                        <th class="text-center">Palidez</th>
+                        <th class="text-center">Cianosis</th>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td class="text-center"><?php echo $datos_car_vas['disnea'];?></td>
+                            <td class="text-center"><?php echo $datos_car_vas['sincopes'];?></td>
+                            <td class="text-center"><?php echo $datos_car_vas['fatiga'];?></td>
+                            <td class="text-center"><?php echo $datos_car_vas['letargo'];?></td>
+                            <td class="text-center"><?php echo $datos_car_vas['ascitis'];?></td>
+                            <td class="text-center"><?php echo $datos_car_vas['edema'];?></td>
+                            <td class="text-center"><?php echo $datos_car_vas['palidez'];?></td>
+                            <td class="text-center"><?php echo $datos_car_vas['cianosis'];?></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>     
+    </div>
+    <!--fin de tabla cardiovascular-->
+
+    <!--Inicio de tabla respiratorio-->
+    <div class="container">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h4 class="text-center mt-3">Respiratorio</h4>
+            <div class="table-responsive table-hover" id="TablaConsulta">
+                <table class="table">
+                    <thead class="text-muted">
+                        <th class="text-center">Tos</th>
+                        <th class="text-center">Disnea</th>
+                        <th class="text-center">Estornudos</th>
+                        <th class="text-center">Mocos</th>
+                        <th class="text-center">Secreción</th>
+                        <th class="text-center">Polipnea</th>
+                        <th class="text-center">Cianosis</th>
+                        <th class="text-center">Leganas</th>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td class="text-center"><?php echo $datos_respi['tos'];?></td>
+                            <td class="text-center"><?php echo $datos_respi['disnea'];?></td>
+                            <td class="text-center"><?php echo $datos_respi['estornudos'];?></td>
+                            <td class="text-center"><?php echo $datos_respi['mocos'];?></td>
+                            <td class="text-center"><?php echo $datos_respi['secrecion'];?></td>
+                            <td class="text-center"><?php echo $datos_respi['polipnea'];?></td>
+                            <td class="text-center"><?php echo $datos_respi['cianosis'];?></td>
+                            <td class="text-center"><?php echo $datos_respi['leganas'];?></td>respi
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>     
+    </div>
+    <!--fin de tabla respiratorio-->
+
+    <!--Inicio de tabla reproductor-->
+    <div class="container">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h4 class="text-center mt-3">Reproductor</h4>
+            <div class="table-responsive table-hover" id="TablaConsulta">
+                <table class="table">
+                    <thead class="text-muted">
+                        <th class="text-center">OVH</th>
+                        <th class="text-center">Desecho Vulvar</th>
+                        <th class="text-center">Lamido Excesivo</th>
+                        <th class="text-center">Castrado</th>
+                        <th class="text-center">Celos Regulares</th>
+                        <th class="text-center">Ultima Fecha</th>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td class="text-center"><?php echo $datos_repro['ovh'];?></td>
+                            <td class="text-center"><?php echo $datos_repro['des_vulvar'];?></td>
+                            <td class="text-center"><?php echo $datos_repro['lamido_exc'];?></td>
+                            <td class="text-center"><?php echo $datos_repro['castrado'];?></td>
+                            <td class="text-center"><?php echo $datos_repro['celos_reg'];?></td>
+                            <td class="text-center"><?php echo $datos_repro['fecha_ultimo'];?></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>     
+    </div>
+    <!--fin de tabla reproductor-->
+
+    <!--Inicio de tabla  de datos exafisico-->
+    <div class="container">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h4 class="text-center mt-3">Examen Físico</h4>
+            <div class="table-responsive table-hover" id="TablaConsulta">
+                <table class="table">
+                    <thead class="text-muted">
+                        <th class="text-center">Actitud</th>
+                        <th class="text-center">Condución</th>
+                        <th class="text-center">Hidratación</th>
+                        <th class="text-center">Mandibulares</th>
+                        <th class="text-center">Preescapulares</th>
+                        <th class="text-center">Subaxilares</th>
+                        <th class="text-center">Ingunales</th>
+                        <th class="text-center">Popliteos</th>
+                        <th class="text-center">Parpados</th>
+                        <th class="text-center">Piel</th>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td class="text-center"><?php echo $datos_ef['actitud'];?></td>
+                            <td class="text-center"><?php echo $datos_ef['condicion'];?></td>
+                            <td class="text-center"><?php echo $datos_ef['hidratacion'];?></td>
+                            <td class="text-center"><?php echo $datos_ef['madibulares'];?></td>
+                            <td class="text-center"><?php echo $datos_ef['preescapulares'];?></td>
+                            <td class="text-center"><?php echo $datos_ef['subaxilares'];?></td>
+                            <td class="text-center"><?php echo $datos_ef['ingunales'];?></td>
+                            <td class="text-center"><?php echo $datos_ef['popliteos'];?></td>
+                            <td class="text-center"><?php echo $datos_ef['parpados'];?></td>
+                            <td class="text-center"><?php echo $datos_ef['piel'];?></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>     
+    </div>
+    <!--fin de tabla  de datos exafisico-->
+
+    <!--Inicio de tabla  de datos bucal-->
+    <div class="container">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h4 class="text-center mt-3">Cavidad Bucal</h4>
+            <div class="table-responsive table-hover" id="TablaConsulta">
+                <table class="table">
+                    <thead class="text-muted">
+                        <th class="text-center">Dentadura</th>
+                        <th class="text-center">Sarro</th>
+                        <th class="text-center">Encias</th>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td class="text-center"><?php echo $datos_cb['dentadura'];?></td>
+                            <td class="text-center"><?php echo $datos_cb['sarro'];?></td>
+                            <td class="text-center"><?php echo $datos_cb['encias'];?></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>     
+    </div>
+    <!--fin de tabla  de datos bucal-->
+
+    <!--Inicio de tabla  de datos ojos-->
+    <div class="container">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h4 class="text-center mt-3">Ojos</h4>
+            <div class="table-responsive table-hover" id="TablaConsulta">
+                <table class="table">
+                    <thead class="text-muted">
+                        <th class="text-center">Humedad</th>
+                        <th class="text-center">Córnea</th>
+                        <th class="text-center">Cristalino</th>
+                        <th class="text-center">Vasos Episclerales</th>
+                        <th class="text-center">Epífora</th>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td class="text-center"><?php echo $datos_ojos['humedad'];?></td>
+                            <td class="text-center"><?php echo $datos_ojos['cornea'];?></td>
+                            <td class="text-center"><?php echo $datos_ojos['cristalino'];?></td>
+                            <td class="text-center"><?php echo $datos_ojos['episcrerales'];?></td>
+                            <td class="text-center"><?php echo $datos_ojos['epifora'];?></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>     
+    </div>
+    <!--fin de tabla  de datos ojos-->
+
+    <!--Inicio de tabla  de datos mucosas-->
+    <div class="container">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h4 class="text-center mt-3">Mucosas</h4>
+            <div class="table-responsive table-hover" id="TablaConsulta">
+                <table class="table">
+                    <thead class="text-muted">
+                        <th class="text-center">Conjuntiva</th>
+                        <th class="text-center">Oral</th>
+                        <th class="text-center">Vaginal</th>
+                        <th class="text-center">Prepucial</th>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td class="text-center"><?php echo $datos_muc['conjuntiva'];?></td>
+                            <td class="text-center"><?php echo $datos_muc['oral'];?></td>
+                            <td class="text-center"><?php echo $datos_muc['vaginal'];?></td>
+                            <td class="text-center"><?php echo $datos_muc['prepucial'];?></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>     
+    </div>
+    <!--fin de tabla  de datos mucosas-->
+
+    <!--Inicio de tabla  de datos auscultacion_r-->
+    <div class="container">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h4 class="text-center mt-3">Auscultación: Sistema Respiratorio</h4>
+            <div class="table-responsive table-hover" id="TablaConsulta">
+                <table class="table">
+                    <thead class="text-muted">
+                        <th class="text-center">Tipo</th>
+                        <th class="text-center">Profundidad</th>
+                        <th class="text-center">Ritmo</th>
+                        <th class="text-center">Sínodos</th>
+                        <th class="text-center">Descripción</th>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td class="text-center"><?php echo $datos_au_r['tipo'];?></td>
+                            <td class="text-center"><?php echo $datos_au_r['profundidad'];?></td>
+                            <td class="text-center"><?php echo $datos_au_r['ritmo'];?></td>
+                            <td class="text-center"><?php echo $datos_au_r['sinodos'];?></td>
+                            <td class="text-center"><?php echo $datos_au_r['describa'];?></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>     
+    </div>
+    <!--fin de tabla  de datos auscultacion_r-->
+
+    <!--Inicio de tabla  de datos auscultacion_c-->
+    <div class="container">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h4 class="text-center mt-3">Auscultación: Sistema Cardíaco</h4>
+            <div class="table-responsive table-hover" id="TablaConsulta">
+                <table class="table">
+                    <thead class="text-muted">
+                        <th class="text-center">Sonidos Valvulares</th>
+                        <th class="text-center">Soplos Valvulares</th>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td class="text-center"><?php echo $datos_au_c['sonidos_v'];?></td>
+                            <td class="text-center"><?php echo $datos_au_c['soplos_v'];?></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>     
+    </div>
+    <!--fin de tabla  de datos auscultacion_c-->
+
+    <!--Inicio de tabla  de datos palpacion-->
+    <div class="container">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h4 class="text-center mt-3">Palpación</h4>
+            <div class="table-responsive table-hover" id="TablaConsulta">
+                <table class="table">
+                    <thead class="text-muted">
+                        <th class="text-center">Órgano</th>
+                        <th class="text-center">Descripción</th>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td class="text-center"><?php echo $datos_palp['organo'];?></td>
+                            <td class="text-center"><?php echo $datos_palp['descripcion'];?></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>     
+    </div>
+    <!--fin de tabla  de datos palpacion -->
+
+    <!--Inicio de tabla  de datos constantes -->
+    <div class="container">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h4 class="text-center mt-3">Constantes</h4>
+            <div class="table-responsive table-hover" id="TablaConsulta">
+                <table class="table">
+                    <thead class="text-muted">
+                        <th class="text-center">Frecuencia Cardíaca</th>
+                        <th class="text-center">Frecuencia Respiratoria</th>
+                        <th class="text-center">Retorno Capilar</th>
+                        <th class="text-center">Pulso</th>
+                        <th class="text-center">Reflejo Pupilar</th>
+                        <th class="text-center">Temperatura</th>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td class="text-center"><?php echo $datos_const['frec_cardiaca'];?></td>
+                            <td class="text-center"><?php echo $datos_const['frec_respiratoria'];?></td>
+                            <td class="text-center"><?php echo $datos_const['retorno_capilar'];?></td>
+                            <td class="text-center"><?php echo $datos_const['pulso'];?></td>
+                            <td class="text-center"><?php echo $datos_const['ref_pupilar'];?></td>
+                            <td class="text-center"><?php echo $datos_const['temperatura'];?></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>     
+    </div>
+    <!--fin de tabla  de datos constantes -->
+
+    <!--Inicio de tabla  de datos mus_esqueletico -->
+    <div class="container">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h4 class="text-center mt-3">Músculo-Esquelético</h4>
+            <div class="table-responsive table-hover" id="TablaConsulta">
+                <table class="table">
+                    <thead class="text-muted">
+                        <th class="text-center">Claudicación</th>
+                        <th class="text-center">Marcha Anormal</th>
+                        <th class="text-center">Miembro(s) Afectado(s)</th>
+                        <th class="text-center">Dificultad para incorporarse</th>
+                        <th class="text-center">Atrofia Muscular</th>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td class="text-center"><?php echo $datos_me['claudicacion'];?></td>
+                            <td class="text-center"><?php echo $datos_me['m_anormal'];?></td>
+                            <td class="text-center"><?php echo $datos_me['miembro_afectado'];?></td>
+                            <td class="text-center"><?php echo $datos_me['dif_incorporarse'];?></td>
+                            <td class="text-center"><?php echo $datos_me['atro_muscular'];?></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>     
+    </div>
+    <!--fin de tabla  de datos mus_esqueletico -->
+
+    <!--Inicio de tabla  de datos tegumentario -->
+    <div class="container">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h4 class="text-center mt-3">Tegumentario</h4>
+            <div class="table-responsive table-hover" id="TablaConsulta">
+                <table class="table">
+                    <thead class="text-muted">
+                        <th class="text-center">Lesiones en la piel</th>
+                        <th class="text-center">Características de las Lesiones</th>
+                        <th class="text-center">Prurito</th>
+                        <th class="text-center">Púlgas/Garrapatas</th>
+                        <th class="text-center">Sacude la cabeza</th>
+                        <th class="text-center">Frecuencia de baño</th>
+                        <th class="text-center">Próducto Usado</th>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td class="text-center"><?php echo $datos_teg['les_piel'];?></td>
+                            <td class="text-center"><?php echo $datos_teg['car_lesiones'];?></td>
+                            <td class="text-center"><?php echo $datos_teg['prurito'];?></td>
+                            <td class="text-center"><?php echo $datos_teg['bichos'];?></td>
+                            <td class="text-center"><?php echo $datos_teg['sac_cabeza'];?></td>
+                            <td class="text-center"><?php echo $datos_teg['frec_bano'];?></td>
+                            <td class="text-center"><?php echo $datos_teg['prod_utilizado'];?></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>     
+    </div>
+    <!--fin de tabla  de datos tegumentario -->
+
+    <!--Inicio de tabla  de datos nervioso -->
+    <div class="container">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h4 class="text-center mt-3">Sistema Nervioso</h4>
+            <div class="table-responsive table-hover" id="TablaConsulta">
+                <table class="table">
+                    <thead class="text-muted">
+                        <th class="text-center">Convulsiones</th>
+                        <th class="text-center">Letargo</th>
+                        <th class="text-center">Incontinencia fecal</th>
+                        <th class="text-center">Incontinencia urinaria</th>
+                        <th class="text-center">Inclinación de cabeza</th>
+                        <th class="text-center">Mioclonias</th>
+                        <th class="text-center">Ceguera</th>
+                        <th class="text-center">Sordera</th>
+                        <th class="text-center">Paresia</th>
+                        <th class="text-center">Parálisis</th>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td class="text-center"><?php echo $datos_sisner['convulsiones'];?></td>
+                            <td class="text-center"><?php echo $datos_sisner['letargo'];?></td>
+                            <td class="text-center"><?php echo $datos_sisner['inc_fecal'];?></td>
+                            <td class="text-center"><?php echo $datos_sisner['inc_urinaria'];?></td>
+                            <td class="text-center"><?php echo $datos_sisner['inclinacion_cabeza'];?></td>
+                            <td class="text-center"><?php echo $datos_sisner['mioclonia'];?></td>
+                            <td class="text-center"><?php echo $datos_sisner['ceguera'];?></td>
+                            <td class="text-center"><?php echo $datos_sisner['sordera'];?></td>
+                            <td class="text-center"><?php echo $datos_sisner['paresia'];?></td>
+                            <td class="text-center"><?php echo $datos_sisner['paralisis'];?></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>     
+    </div>
+    <!--fin de tabla  de datos nervioso -->
+
+    <!--Inicio de tabla  de datos conducta -->
+    <div class="container">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h4 class="text-center mt-3">Conducta</h4>
+            <div class="table-responsive table-hover" id="TablaConsulta">
+                <table class="table">
+                    <thead class="text-muted">
+                        <th class="text-center">Agresión Ofensiva</th>
+                        <th class="text-center">Agresión Defensiva</th>
+                        <th class="text-center">Conducta Destructiva</th>
+                        <th class="text-center">Eliminación Inadecuada</th>
+                        <th class="text-center">Apetito Depravado</th>
+                        <th class="text-center">Sociable</th>
+                        <th class="text-center">Timidez</th>
+                        <th class="text-center">Temor Específico</th>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td class="text-center"><?php echo $datos_cond['agr_ofensiva'];?></td>
+                            <td class="text-center"><?php echo $datos_cond['agr_defensiva'];?></td>
+                            <td class="text-center"><?php echo $datos_cond['cond_destructiva'];?></td>
+                            <td class="text-center"><?php echo $datos_cond['elim_inadecuada'];?></td>
+                            <td class="text-center"><?php echo $datos_cond['ape_depravado'];?></td>
+                            <td class="text-center"><?php echo $datos_cond['sociable'];?></td>
+                            <td class="text-center"><?php echo $datos_cond['timidez'];?></td>
+                            <td class="text-center"><?php echo $datos_cond['temor_especifico'];?></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>     
+    </div>
+    <!--fin de tabla  de datos conducta -->
+
+    <!--Inicio de tabla  de datos diagnostico -->
+    <div class="container">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h4 class="text-center mt-3">Diagnóstico Final</h4>
+            <div class="table-responsive table-hover" id="TablaConsulta">
+                <table class="table">
+                    <thead class="text-muted">
+                        <th class="text-center">Posibilidades de Diagnóstico</th>
+                        <th class="text-center">Pruebas</th>
+                        <th class="text-center">Receta</th>
+                        <th class="text-center">Dieta</th>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td class="text-center"><?php echo $datos_df['posibilidad_d'];?></td>
+                            <td class="text-center"><?php echo $datos_df['pruebas'];?></td>
+                            <td class="text-center"><?php echo $datos_df['receta'];?></td>
+                            <td class="text-center"><?php echo $datos_df['dieta'];?></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>     
+    </div>
+    <!--fin de tabla  de datos diagnostico -->
 
     <!--script de bootstrap-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
