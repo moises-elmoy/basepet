@@ -83,7 +83,7 @@ if(isset($user) && isset($pass)){
 					</div>
 				</div>
 				<div class="d-flex justify-content-center form_container">
-				<h1 class="text-white">Inicié Sesión</h1>
+				<h1 class="text-white">Iniciar Sesión</h1>
 				</div>
 					<div class="d-flex justify-content-center form_container" style="margin-top:10%;">
 						<form action="<?php echo $SERVER['PHP_SELF']?>" method="post">

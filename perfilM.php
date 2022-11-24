@@ -14,6 +14,11 @@ $consulta = "SELECT * FROM mascotas WHERE idmascota = '$id'";
 $ejecuta = $conecta->query($consulta);
 //asocia toda la linea donde se encuentre la variable de sesion del correo del usuario
 $row = $ejecuta->fetch_assoc();
+
+//Ver datos de la consulta de la mascota
+$v = "SELECT * FROM vacunacion WHERE id_mascota = '$id'";
+$seleccionar_vacuna = $conecta -> query($v); 
+$datos_vacuna = $seleccionar_vacuna->fetch_array();
 ?>
 
 <?php
@@ -55,7 +60,7 @@ include 'includes/conecta.php';
         <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="mascotas.php" title="Volver al inicio"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                <a class="nav-link active" aria-current="page" href="principal.php" title="Volver al inicio"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-house-door-fill" viewBox="0 0 16 16">
                 <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/>
                 </svg></a>
             </li>
@@ -112,7 +117,39 @@ include 'includes/conecta.php';
     <!--Separador-->
     <span class="placeholder col-10 mt-3" style="background-color: #A3D2CA; margin-left:8%;"></span>
 
-    <!-- Tabla de Eventos -->
+    <!-- Tabla de los datos de la mascota -->
+    <div class="container">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h4 class="text-center mt-3">Vacunas vigentes</h4>
+            <div class="table-responsive table-hover" id="TablaConsulta">
+                <table class="table">
+                    <thead class="text-muted">
+                        <th class="text-center">Moquillo</th>
+                        <th class="text-center">Parvovirus</th>
+                        <th class="text-center">Polivalente</th>
+                        <th class="text-center">Bordetella</th>
+                        <th class="text-center">Leptospira</th>
+                        <th class="text-center">Triple felina</th>
+                        <th class="text-center">Leucemia</th>
+                        <th class="text-center">Rabia</th>
+                    </thead>
+                    <tbody class="table-group-divider">
+                        <tr>
+                            <td class="text-center"><?php echo $datos_vacuna['moquillo'];?></td>
+                            <td class="text-center"><?php echo $datos_vacuna['parvovirus'];?></td>
+                            <td class="text-center"><?php echo $datos_vacuna['polivalente'];?></td>
+                            <td class="text-center"><?php echo $datos_vacuna['bordetella'];?></td>
+                            <td class="text-center"><?php echo $datos_vacuna['leptospira'];?></td>
+                            <td class="text-center"><?php echo $datos_vacuna['triple_felina'];?></td>
+                            <td class="text-center"><?php echo $datos_vacuna['leucemia'];?></td>
+                            <td class="text-center"><?php echo $datos_vacuna['rabia'];?></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>     
+    </div>
+    <!--fin de tabla vacunas-->
 
     <!--botón para generar PDF-->
     <a class="btn btn-primary mt-3" style="margin-left:80%;" href="reporte.php?idmascota=<?php echo $row['idmascota'];?>" role="button" title="Reporte en pdf del historial de la mascota">
@@ -121,31 +158,6 @@ include 'includes/conecta.php';
     </svg>
     Generar reporte
     </a>
-
-    <div class="container">
-        <div class="col-sm-12 col-md-12 col-lg-12">
-            <h3 class="text-center" style="margin-top:3%;">Historial</h3>
-            <div class="table-responsive table-hover" id="TablaConsulta">
-                <table class="table">
-                    <thead class="text-muted">
-                        <th class="text-center">Usuario</th>
-                        <th class="text-center">Acción</th>
-                        <th class="text-center">Fecha y Hora</th>
-                    </thead>
-                    <tbody class="table-group-divider">
-                        <?php while($row = $save->fetch_assoc()){?>
-                        <tr>
-                            <td class="text-center"><?php echo $row['usuario'];?></td>
-                            <td class="text-center"><?php echo $row['accion'];?></td>
-                            <td class="text-center"><?php echo $row['fecha_hora'];?></td>
-                            </td>
-                        </tr>
-                        <?php } ?>
-                    </tbody>
-                </table>
-            </div>
-        </div>     
-    </div>
 
     <!--script de bootstrap-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
