@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 //recordar la variable de sesión
 session_start();
 include 'includes/conecta.php';
@@ -86,11 +87,6 @@ $constantes= "SELECT * FROM constantes WHERE id_mascota = '$id'";
 $const = $conecta -> query($constantes); 
 $datos_const= $const->fetch_array();
 
-//Datos de la Tabla constantes
-$constantes= "SELECT * FROM constantes WHERE id_mascota = '$id'";
-$const = $conecta -> query($constantes); 
-$datos_const= $const->fetch_array();
-
 //Datos de la Tabla mus_esqueletico
 $mus_esqueletico= "SELECT * FROM mus_esqueletico WHERE id_mascota = '$id'";
 $me = $conecta -> query($mus_esqueletico); 
@@ -115,6 +111,11 @@ $datos_cond= $cond->fetch_array();
 $diagnostico= "SELECT * FROM diagnostico WHERE id_mascota = '$id'";
 $df = $conecta -> query($diagnostico); 
 $datos_df= $df->fetch_array();
+
+//Datos de la Tabla donde se almacenan las radiografias 
+$radiografias= "SELECT * FROM imagenes WHERE id_paciente = '$id'";
+$radio = $conecta -> query($radiografias); 
+$datos_radio= $radio->fetch_array();
 ?>
 
 <?php
@@ -318,6 +319,7 @@ include 'includes/conecta.php';
                             <td class="text-center"><?php echo $datos_digestivo['resultado'];?></td>
                             <td class="text-center"><?php echo $datos_digestivo['desparasitacion'];?></td>
                             <td class="text-center"><?php echo $datos_digestivo['producto'];?></td>
+                            
                         </tr>
                     </tbody>
                 </table>
@@ -799,6 +801,16 @@ include 'includes/conecta.php';
         </div>     
     </div>
     <!--fin de tabla  de datos diagnostico -->
+
+    <!--Muestra radiografias del animal-->
+    <h4 class="text-center mt-3 mb-3">Radiografías</h4>
+        <div class="card mt-3 mb-3 ms-5" style="width: 30rem;">
+            <!--indicamos el tipo de imagen que estamos extrayendo y tambien convertimos los binarios a base64 para que se pueda mostrar-->
+            <img src="data:<?php echo $datos_radio['tipo'];?>;base64,<?php echo base64_encode($datos_radio['imagen']);?>" class="card-img-top" alt="...">
+            <div class="card-body">
+                <p class="card-text"><b>Descripción:</b> <?php echo $datos_radio['descripcion_imagen'];?></p>
+            </div>
+        </div>
 
     <!--script de bootstrap-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>

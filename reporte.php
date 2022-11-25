@@ -29,6 +29,101 @@ $v = "SELECT * FROM vacunacion WHERE id_mascota = '$id'";
 $seleccionar_vacuna = $conecta -> query($v); 
 $datos_vacuna = $seleccionar_vacuna->fetch_array();
 
+//Datos de la Tabla alimentacion
+$alimento = "SELECT * FROM alimentacion WHERE id_mascota = '$id'";
+$food = $conecta -> query($alimento); 
+$datos_alimento = $food->fetch_array();
+
+//Datos de la Tabla digestivo
+$digestivo = "SELECT * FROM digestivo WHERE id_mascota = '$id'";
+$dig = $conecta -> query($digestivo); 
+$datos_digestivo = $dig->fetch_array();
+
+//Datos de la Tabla cardiovascular
+$cardiovascular = "SELECT * FROM cardiovascular WHERE id_mascota = '$id'";
+$car_vas = $conecta -> query($cardiovascular); 
+$datos_car_vas = $car_vas->fetch_array();
+
+//Datos de la Tabla respiratorio
+$respiratorio = "SELECT * FROM respiratorio WHERE id_mascota = '$id'";
+$respi = $conecta -> query($respiratorio); 
+$datos_respi= $respi->fetch_array();
+
+//Datos de la Tabla reproductor
+$reproductor = "SELECT * FROM reproductor WHERE id_mascota = '$id'";
+$repro = $conecta -> query($reproductor); 
+$datos_repro= $repro->fetch_array();
+
+//Datos de la Tabla exafisico
+$exafisico= "SELECT * FROM exafisico WHERE id_mascota = '$id'";
+$ef = $conecta -> query($exafisico); 
+$datos_ef= $ef->fetch_array();
+
+//Datos de la Tabla bucal
+$bucal= "SELECT * FROM bucal WHERE id_mascota = '$id'";
+$cav_buc = $conecta -> query($bucal); 
+$datos_cb= $cav_buc->fetch_array();
+
+//Datos de la Tabla ojos
+$ojos= "SELECT * FROM ojos WHERE id_mascota = '$id'";
+$eyes = $conecta -> query($ojos); 
+$datos_ojos= $eyes->fetch_array();
+
+//Datos de la Tabla mucosas
+$mucosas= "SELECT * FROM mucosas WHERE id_mascota = '$id'";
+$muc = $conecta -> query($mucosas); 
+$datos_muc= $muc->fetch_array();
+
+//Datos de la Tabla auscultacion_r
+$auscultacion_r= "SELECT * FROM auscultacion_r WHERE id_mascota = '$id'";
+$au_r = $conecta -> query($auscultacion_r); 
+$datos_au_r= $au_r->fetch_array();
+
+//Datos de la Tabla auscultacion_c
+$auscultacion_c= "SELECT * FROM auscultacion_c WHERE id_mascota = '$id'";
+$au_c = $conecta -> query($auscultacion_c); 
+$datos_au_c= $au_c->fetch_array();
+
+//Datos de la Tabla palpacion
+$palpacion= "SELECT * FROM palpacion WHERE id_mascota = '$id'";
+$palp = $conecta -> query($palpacion); 
+$datos_palp= $palp->fetch_array();
+
+//Datos de la Tabla constantes
+$constantes= "SELECT * FROM constantes WHERE id_mascota = '$id'";
+$const = $conecta -> query($constantes); 
+$datos_const= $const->fetch_array();
+
+//Datos de la Tabla mus_esqueletico
+$mus_esqueletico= "SELECT * FROM mus_esqueletico WHERE id_mascota = '$id'";
+$me = $conecta -> query($mus_esqueletico); 
+$datos_me= $me->fetch_array();
+
+//Datos de la Tabla tegumentario
+$tegumentario= "SELECT * FROM tegumentario WHERE id_mascota = '$id'";
+$teg = $conecta -> query($tegumentario); 
+$datos_teg= $teg->fetch_array();
+
+//Datos de la Tabla nervioso
+$nervioso= "SELECT * FROM nervioso WHERE id_mascota = '$id'";
+$sisner = $conecta -> query($nervioso); 
+$datos_sisner= $sisner->fetch_array();
+
+//Datos de la Tabla conducta
+$conducta= "SELECT * FROM conducta WHERE id_mascota = '$id'";
+$cond = $conecta -> query($conducta); 
+$datos_cond= $cond->fetch_array();
+
+//Datos de la Tabla diagnostico
+$diagnostico= "SELECT * FROM diagnostico WHERE id_mascota = '$id'";
+$df = $conecta -> query($diagnostico); 
+$datos_df= $df->fetch_array();
+
+//Datos de la Tabla donde se almacenan las radiografias 
+$radiografias= "SELECT * FROM imagenes WHERE id_paciente = '$id'";
+$radio = $conecta -> query($radiografias); 
+$datos_radio= $radio->fetch_array();
+
 
 //se llena el bufer para guardar la pagina html en una variable y de esta manera poder convertirlo con DOMPDF
 ob_start();
@@ -54,78 +149,78 @@ ob_start();
     <link rel="icon" href="images/logo_basepet_2.png">
 
 </head>
-<body style="margin: 5px; border:darkcyan 5px solid; font-family: 'Hind', sans-serif;">
+<body style="font-family: 'Hind', sans-serif;">
     
-    <h1 class="text-center mt-2 mb-2 fw-bold">Historial Médico</h1>
+    <h1 class="text-center mt-2 mb-4 fw-bold">Historial Médico</h1>
 
-    <div class="container text-center">
-        <div class="row row-cols-auto">
+    <div class="container">
+        <div class="row row-cols-6">
             <div class="col">
-                <h3 class="ms-3 me-3 fw-semibold">Nombre:</h3>
+                <h4>Nombre:</h4>
             </div>
             <div class="col">
                 <small class="text-muted"><?php echo $datos['nombre']?></small>
             </div>
             <div class="col">
-                <h3 class="ms-3 me-3 fw-semibold">Raza:</h3>
+                <h4>Raza:</h4>
             </div>
             <div class="col">
             <small class="text-muted"><?php echo $datos['raza']?></small> 
             </div>
             <div class="col">
-                <h3 class="ms-3 me-3 fw-semibold">Nombre de dueño:</h3>
+                <h4>Nombre de dueño:</h4>
             </div>
             <div class="col">
             <small class="text-muted"><?php echo $datos_cliente['nombre_cliente']?> <?php echo $datos_cliente['apellido1']?> <?php echo $datos_cliente['apellido2']?></small> 
             </div>
         </div>
 
-        <div class="row row-cols-auto">
+        <div class="row row-cols-8">
             <div class="col">
-                <h3 class="ms-3 me-3 fw-semibold">Color:</h3>
+                <h4>Color:</h4>
             </div>
             <div class="col">
                 <small class="text-muted"><?php echo $datos['color']?></small>
             </div>
             <div class="col">
-                <h3 class="ms-3 me-3 fw-semibold">Género:</h3>
+                <h4>Género:</h4>
             </div>
             <div class="col">
             <small class="text-muted"><?php echo $datos['genero']?></small> 
             </div>
             <div class="col">
-                <h3 class="ms-3 me-3 fw-semibold">Especie:</h3>
+                <h4>Especie:</h4>
             </div>
             <div class="col">
             <small class="text-muted"><?php echo $datos['especie']?></small> 
             </div>
             <div class="col">
-                <h3 class="ms-3 me-3 fw-semibold">Fecha de nacimiento:</h3>
+                <h4>Fecha de nacimiento:</h4>
             </div>
             <div class="col">
             <small class="text-muted"><?php echo $datos['fecha']?></small> 
             </div>
         </div>
 
-        <div class="row row-cols-auto">
+        <div class="row row-cols-4">
             <div class="col">
-                <h3 class="ms-3 me-3 fw-semibold">Edad:</h3>
+                <h4>Edad:</h4>
             </div>
             <div class="col">
-                <small class="text-muted"><?php echo $datos['edad']?></small>
+                <small class="text-muted"><?php echo $datos['edad']?> años</small>
             </div>
             <div class="col">
-                <h3 class="ms-3 me-3 fw-semibold">Peso:</h3>
+                <h4>Peso:</h4>
             </div>
             <div class="col">
-            <small class="text-muted"><?php echo $datos['peso']?></small> 
+            <small class="text-muted"><?php echo $datos['peso']?> kg</small> 
             </div>
         </div>
     </div>
 
     <!--Inicio de tabla vacunas-->
-    <div class="container">
-        <div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="container ms-1 col-md-8">
+        <div>
             <h4 class="text-center mt-3">Vacunas vigentes</h4>
             <div class="table-responsive table-hover" id="TablaConsulta">
                 <table class="table">
@@ -148,12 +243,12 @@ ob_start();
                             <td class="text-center"><?php echo $datos_vacuna['leptospira'];?></td>
                             <td class="text-center"><?php echo $datos_vacuna['triple_felina'];?></td>
                             <td class="text-center"><?php echo $datos_vacuna['leucemia'];?></td>
-                            <td class="text-center"><?php echo $datos_vacuna['Rabia'];?></td>
+                            <td class="text-center"><?php echo $datos_vacuna['rabia'];?></td>
                         </tr>
                     </tbody>
                 </table>
-            </div>
-        </div>     
+            </div> 
+        </div>    
     </div>
     <!--fin de tabla vacunas-->
         <!--script de bootstrap-->
