@@ -1,6 +1,6 @@
 <?php
 //sirve en este caso para que no mande error por la variable de mensaje ya que no tiene valor hasta que se presiona el boton enviar
-//error_reporting(0);
+error_reporting(0);
 //recordar la variable de sesión
 session_start();
 include 'includes/conecta.php';
